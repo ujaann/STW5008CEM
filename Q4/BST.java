@@ -1,14 +1,7 @@
 import java.util.ArrayList;
 
 public class BST {
-    /*
-     * Skewed binary treee are bad for time complex
-     * Balancing is good to make maximum use of bst
-     * 
-     * So AVL which is BST (Self balancing)
-     * -Balancce Factor={-1,0,1}
-     * -Balance Factor=height of left - height of right subtree
-     */
+
     public static class Node {
         int data;
         Node left;

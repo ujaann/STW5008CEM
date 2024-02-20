@@ -12,10 +12,12 @@ public class PriorityQueueu {
 
     int dequeue() {
         return heap.deleteHeap(0);
+        // we just deque top element
     }
 
     void queue(int element) {
         heap.insertHeap(element);
+        // no heapify is used only heap insert
     }
 
     public static void main(String[] args) {
@@ -26,8 +28,9 @@ public class PriorityQueueu {
         pq.queue(21);
         pq.queue(143);
 
-        // System.out.println(pq.dequeue());
         pq.dequeue();
+        // we get minimium value
+
         System.out.println(pq);
 
     }

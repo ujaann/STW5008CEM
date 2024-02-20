@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class ClosestXValues {
@@ -34,15 +35,48 @@ public class ClosestXValues {
         int counting = 0;
         for (int i = 0, j = closestIndex; i < valuesCount && j < t.inorderList.size(); j++, i++) {
             valuesClosest[i] = t.inorderList.get(j);
-            System.out.println(valuesClosest[i]);
+            // System.out.println(valuesClosest[i]);
             counting++;
         }
         for (int i = 1, j = valuesCount - 1; i <= counting
                 && j > (valuesCount > 2 ? valuesCount / 2 : valuesCount / 2 - 1); j--, i++) {
             valuesClosest[j] = t.inorderList.get(closestIndex - i);
-            System.out.println((closestIndex));
+            // System.out.println((closestIndex));
         }
         System.out.println(Arrays.toString(valuesClosest));
+    }
+
+    Integer[] findValuesClosestTo(double number, ArrayList<Integer> list, int numberOfValues) {
+        // Maybe checking if it was closer to which number can make it so that i can go
+        // in forwards direction(increasing) or backwards (decreasing))
+        System.out.println(list);
+        int closestIndex = 0;
+        for (int i = 1; i < list.size(); i++) {
+            double diff = number - list.get(i);
+            diff = Math.abs(diff);
+            if (diff < Math.abs(number - list.get(closestIndex))) {
+                closestIndex = i;
+            }
+        }
+        if (numberOfValues >= list.size()) {
+            System.out.println(list);
+
+            return ((Integer[]) list.toArray());
+        }
+        Integer[] valuesClosest = new Integer[numberOfValues];
+        int counting = 0;
+        for (int i = 0, j = closestIndex; i < numberOfValues && j < list.size(); j++, i++) {
+            valuesClosest[i] = list.get(j);
+            // System.out.println(valuesClosest[i]);
+            counting++;
+        }
+        for (int i = 1, j = numberOfValues - 1; i <= counting
+                && j > (numberOfValues > 2 ? numberOfValues / 2 : numberOfValues / 2 - 1); j--, i++) {
+            valuesClosest[j] = list.get(closestIndex - i);
+            // System.out.println((closestIndex));
+        }
+        System.out.println(Arrays.toString(valuesClosest));
+        return valuesClosest;
     }
 
 }
